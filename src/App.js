@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import NewService from "./pages/NewService";
+import ServiceDetail from "./pages/ServiceDetail";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/new" element={<NewService />} />
+          <Route path="/services/:id" element={<ServiceDetail />} />
         </Routes>
       </div>
     </Router>
