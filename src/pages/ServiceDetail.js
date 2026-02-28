@@ -32,7 +32,7 @@ export default function ServiceDetail() {
   const handleSendMessage = () => {
     if (!message.trim()) return alert("Écrivez un message avant d'envoyer.");
 
-    fetch(`http://localhost:3000/exchanges`, {
+    fetch(`${process.env.REACT_APP_API_URL}/exchanges`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
