@@ -1,70 +1,258 @@
-# Getting Started with Create React App
+# 🌍 CommuneXR - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![CommuneXR Banner](https://via.placeholder.com/1200x400/1a1a2e/a8b8ff?text=CommuneXR+%7C+Connect+Your+Neighborhood)
 
-## Available Scripts
+CommuneXR is a community-powered platform that turns your neighborhood into a live map of mutual aid.
 
-In the project directory, you can run:
+Users can post offers or needs, and see them instantly displayed on an interactive map. The goal is simple:
 
-### `npm start`
+**Make local help visible. Build real connections.**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🚀 Live Demo
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+🔗 **Frontend App:** [https://communexr-front.onrender.com](https://communexr-front.onrender.com)  
+🔗 **Backend API:** [https://communexr.onrender.com](https://communexr.onrender.com)
 
-### `npm test`
+## 📁 Repositories
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+🔗 **Frontend Repo:** [https://github.com/joupify/communeXR_front](https://github.com/joupify/communeXR_front)  
+🔗 **Backend Repo:** [https://github.com/joupify/communeXR](https://github.com/joupify/communeXR)
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🎥 Demo Video
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[![CommuneXR Demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://youtube.com/watch?v=YOUR_VIDEO_ID)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+_Click the image above to watch a 2-minute demo_
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 📸 Screenshots
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+|          Interactive Map          |                  Create Service                   |
+| :-------------------------------: | :-----------------------------------------------: |
+| ![Map](images/map-screenshot.png) | ![New Service](images/new-service-screenshot.png) |
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+|                   Dashboard                   |              Service Details              |
+| :-------------------------------------------: | :---------------------------------------: |
+| ![Dashboard](images/dashboard-screenshot.png) | ![Details](images/details-screenshot.png) |
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 💡 The Idea
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Every community has untapped potential.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Someone can fix a bike.  
+Someone needs help moving.  
+Someone offers language lessons.
 
-### Code Splitting
+But these needs and skills rarely connect.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**CommuneXR transforms a neighborhood into an interactive support network.**
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🗺️ Core Features
 
-### Making a Progressive Web App
+✅ **📍 Interactive map** (Leaflet + OpenStreetMap) with custom markers  
+✅ **➕ Create a service** (Offer or Need) with category selection  
+✅ **🔎 Filter by type** (offers/needs) **and category** (real-time search)  
+✅ **👤 Simple authentication** (DemoUser for the challenge)  
+✅ **🏷️ Badge system** with 4 unique badges to earn  
+✅ **🔄 Exchange tracking** with status (proposed → accepted → completed)  
+✅ **📊 User dashboard** with stats, badges, and exchange history  
+✅ **💬 Messaging system** integrated with exchanges  
+✅ **🎮 Gamification** with points (10 per completed exchange)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## 🧠 How It Works
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### User Flow
 
-### Deployment
+1. **👀 Browse** the map to see nearby offers (🤝 green) and needs (🆘 red)
+2. **🔍 Filter** by category to find exactly what you need
+3. **📝 Click** a marker to see details and message the person
+4. **💬 Send** a message → creates an exchange proposal
+5. **✅ Accept/Decline** exchanges from your dashboard
+6. **🏆 Complete** exchanges → earn points and badges!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Gamification
 
-### `npm run build` fails to minify
+| Badge             | How to earn                    |
+| ----------------- | ------------------------------ |
+| 🌟 First Helper   | Complete your first exchange   |
+| 🏡 Good Neighbor  | Complete 5 exchanges           |
+| 🦸 Community Hero | Complete 10 exchanges          |
+| 🔧 Skilled Helper | Help in 3 different categories |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Plus:
+
+- ⭐ **10 points** per completed exchange
+- 📈 Badges unlock automatically via Rails callbacks
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+- **React 18** with Hooks
+- **React Router** for navigation
+- **Bootstrap 5** for styling
+- **React-Leaflet** for interactive maps
+- **OpenStreetMap** for map tiles
+- **Netlify/Render** for deployment
+
+### Backend
+
+- **Ruby on Rails 7** (API mode)
+- **PostgreSQL** database
+- **Devise** for authentication
+- **Geocoder** for location services
+- **Render.com** for deployment
+
+---
+
+## 🏗️ Architecture
+
+┌─────────────────┐ ┌─────────────────┐ ┌──────────────┐
+│ │ │ │ │ │
+│ React Frontend│────▶│ Rails API │────▶│ PostgreSQL │
+│ (Render) │ │ (Render) │ │ │
+│ │ │ │ │ │
+└─────────────────┘ └─────────────────┘ └──────────────┘
+
+text
+
+---
+
+## 📊 API Endpoints (used by frontend)
+
+| Method | Endpoint               | Description            |
+| ------ | ---------------------- | ---------------------- |
+| GET    | `/services`            | List all services      |
+| GET    | `/services/:id`        | Get service details    |
+| POST   | `/services`            | Create a new service   |
+| POST   | `/exchanges`           | Create an exchange     |
+| PATCH  | `/exchanges/:id`       | Update exchange status |
+| GET    | `/users/:id`           | Get user profile       |
+| GET    | `/users/:id/exchanges` | Get user exchanges     |
+
+---
+
+## 🚦 Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+### Frontend Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/joupify/communeXR_front.git
+cd communeXR_front
+
+# Install dependencies
+npm install
+
+# Create .env file with API URL
+echo "REACT_APP_API_URL=https://communexr.onrender.com" > .env
+
+# Start development server
+npm start
+The app will be available at http://localhost:3001
+
+Backend Setup (if running locally)
+bash
+# Clone the backend repo
+git clone https://github.com/joupify/communeXR.git
+cd communeXR
+
+# Install dependencies
+bundle install
+
+# Setup database
+rails db:create db:migrate db:seed
+
+# Start Rails server
+rails s -p 3000
+📁 Project Structure
+text
+communeXR_front/
+├── public/
+├── src/
+│   ├── components/     # Reusable components (Map, etc.)
+│   ├── pages/          # Page components
+│   │   ├── Home.js
+│   │   ├── ServiceDetail.js
+│   │   ├── NewService.js
+│   │   └── Dashboard.js
+│   ├── App.js          # Main app with routing
+│   └── index.js
+├── .env                 # Environment variables
+└── package.json
+🧪 Testing
+bash
+npm test
+🎯 Why This Project Matters
+Modern communities are digitally connected but locally disconnected.
+
+CommuneXR bridges that gap by:
+
+🤝 Encouraging real-world interaction between neighbors
+
+🔧 Promoting skill sharing within the community
+
+🌱 Strengthening neighborhood resilience through mutual aid
+
+🏘️ Building genuine community bonds one exchange at a time
+
+⏳ Built For
+DEV Weekend Challenge
+Theme: Build an app that serves a community you care about.
+
+🕒 Timeline: 48 hours
+
+👥 Team: Solo developer
+
+🎯 Goal: Create meaningful community impact
+
+📈 What's Next
+Real-time chat with WebSockets
+
+Mobile app with React Native
+
+Event calendar for community meetups
+
+Reviews and ratings system
+
+Multi-language support
+
+Push notifications
+
+👤 Author
+joupify
+
+GitHub: @joupify
+
+Twitter: @yourtwitter
+
+🙏 Acknowledgments
+Leaflet for the amazing mapping library
+
+OpenStreetMap for free map tiles
+
+Render.com for easy deployment
+
+The DEV community for the challenge and inspiration
+
+📝 License
+This project is MIT licensed.
+
+Made with ❤️ for my neighborhood during the DEV Weekend Challenge
+```
