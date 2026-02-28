@@ -8,6 +8,7 @@ function NewService() {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,7 +16,7 @@ function NewService() {
     setMessage("⏳ Creating service...");
 
     try {
-      const res = await fetch("http://localhost:3000/services", {
+      const res = await fetch(`${API_URL}/services`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
