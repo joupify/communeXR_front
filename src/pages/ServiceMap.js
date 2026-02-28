@@ -38,7 +38,6 @@ export default function ServiceMap() {
 
   return (
     <div style={{ maxWidth: "800px", margin: "20px auto" }}>
-      <h2>Services in Your Neighborhood</h2>
       <MapContainer
         center={[48.8566, 2.3522]}
         zoom={13}
