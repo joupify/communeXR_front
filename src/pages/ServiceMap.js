@@ -28,9 +28,10 @@ const getServiceIcon = (type) =>
 
 export default function ServiceMap() {
   const [services, setServices] = useState([]);
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000";
 
   useEffect(() => {
-    fetch("http://localhost:3000/services")
+    fetch(`${API_URL}/services`)
       .then((res) => res.json())
       .then(setServices)
       .catch(console.error);

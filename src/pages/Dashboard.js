@@ -6,6 +6,7 @@ export default function Dashboard() {
   const [myServices, setMyServices] = useState([]);
   const [myExchanges, setMyExchanges] = useState([]);
   const [loading, setLoading] = useState(true);
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000";
 
   // ✅ AJOUTE LES COULEURS ICI - APRÈS LES useState, AVANT LE useEffect
   const statusColors = {
@@ -17,11 +18,9 @@ export default function Dashboard() {
 
   useEffect(() => {
     Promise.all([
-      fetch("http://localhost:3000/users/1").then((res) => res.json()),
-      fetch("http://localhost:3000/users/1/services").then((res) => res.json()),
-      fetch("http://localhost:3000/users/1/exchanges").then((res) =>
-        res.json(),
-      ),
+      fetch(`${API_URL}/users/1`).then((res) => res.json()),
+      fetch(`${API_URL}/users/1/services`).then((res) => res.json()),
+      fetch(`${API_URL}/users/1/exchanges`).then((res) => res.json()),
     ])
       .then(([userData, servicesData, exchangesData]) => {
         setUser(userData);

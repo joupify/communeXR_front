@@ -8,10 +8,12 @@ export default function ServiceDetail() {
   const [exchanges, setExchanges] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000";
+
   // Récupération du service et des échanges
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:3000/services/${id}?include=exchanges`)
+    fetch(`${API_URL}/services/${id}?include=exchanges`)
       .then((res) => res.json())
       .then((data) => {
         setService(data.service || data);

@@ -4,8 +4,10 @@ import ServiceMap from "./ServiceMap";
 function Home() {
   const [stats, setStats] = useState({ services: 0, offers: 0, needs: 0 });
 
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000";
+
   useEffect(() => {
-    fetch("http://localhost:3000/services")
+    fetch(`${API_URL}/services`)
       .then((res) => res.json())
       .then((data) => {
         setStats({
