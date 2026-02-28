@@ -35,7 +35,7 @@ export default function Dashboard() {
   }, []);
 
   const updateExchangeStatus = (exchangeId, newStatus) => {
-    fetch(`http://localhost:3000/exchanges/${exchangeId}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/exchanges/${exchangeId}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ status: newStatus }),
