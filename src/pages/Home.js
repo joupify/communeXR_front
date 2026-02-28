@@ -5,7 +5,7 @@ function Home() {
   const [stats, setStats] = useState({ services: 0, offers: 0, needs: 0 });
 
   const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000";
-  console.log("API_URL:", API_URL);
+  console.log(process.env.REACT_APP_API_URL);
 
   useEffect(() => {
     fetch(`${API_URL}/services`)
