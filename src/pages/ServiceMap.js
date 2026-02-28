@@ -37,7 +37,7 @@ export default function ServiceMap() {
   }, []);
 
   return (
-    <div style={{ maxWidth: "800px", margin: "20px auto" }}>
+    <div style={{ maxWidth: "100%", margin: "20px auto" }}>
       <MapContainer
         center={[48.8566, 2.3522]}
         zoom={13}
