@@ -22,9 +22,12 @@ Users can post offers or needs, and see them instantly displayed on an interacti
 
 ## 🎥 Demo Video
 
-[![CommuneXR Demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://youtube.com/watch?v=YOUR_VIDEO_ID)
+## 🎥 Demo Video
 
-_Click the image above to watch a 2-minute demo_
+[![CommuneXR Demo](https://img.youtube.com/vi/DE8ptjoFxhw/0.jpg)](https://youtu.be/DE8ptjoFxhw)
+
+▶️ **Watch the demo:** [https://youtu.be/DE8ptjoFxhw](https://youtu.be/DE8ptjoFxhw)
+_Click the image above to watch a demo video_
 
 ---
 
