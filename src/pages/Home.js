@@ -7,7 +7,7 @@ function Home() {
   const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000";
 
   useEffect(() => {
-    fetch(`${API_URL}/services`)
+    fetch("https://communexr-front.onrender.com/services")
       .then((res) => res.json())
       .then((data) => {
         setStats({
