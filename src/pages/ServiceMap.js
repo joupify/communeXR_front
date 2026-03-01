@@ -32,8 +32,16 @@ export default function ServiceMap() {
   const [filterType, setFilterType] = useState("all");
   const [filterCategory, setFilterCategory] = useState("");
   const [loading, setLoading] = useState(true);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000";
+
+  // Detect window resize for responsive adjustments
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -82,40 +90,77 @@ export default function ServiceMap() {
     );
   }
 
+  // ✅ RESPONSIVE LEGEND STYLES
+  const legendStyle = {
+    position: "absolute",
+    top: windowWidth < 768 ? "180px" : "100px", // Plus bas sur mobile
+    right: windowWidth < 768 ? "10px" : "20px",
+    zIndex: 1000,
+    background: "white",
+    padding: windowWidth < 768 ? "8px" : "12px",
+    borderRadius: "8px",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+    border: "1px solid #e5e7eb",
+    fontSize: windowWidth < 768 ? "0.8rem" : "0.9rem",
+    maxWidth: windowWidth < 768 ? "120px" : "auto",
+  };
+
+  // ✅ RESPONSIVE FILTER CONTAINER
+  const filterContainerStyle = {
+    padding: windowWidth < 768 ? "15px" : "20px",
+    background: "white",
+    borderBottom: "1px solid #e5e7eb",
+    boxShadow: "0 2px 4px rgba(0,0,0,0.05)",
+  };
+
+  const filterRowStyle = {
+    display: "flex",
+    gap: windowWidth < 768 ? "10px" : "15px",
+    flexWrap: "wrap",
+    alignItems: "center",
+    justifyContent: "center",
+    maxWidth: "1200px",
+    margin: "0 auto",
+    flexDirection: windowWidth < 768 ? "column" : "row", // Stack on mobile
+  };
+
+  const selectStyle = {
+    padding: windowWidth < 768 ? "8px 12px" : "10px 15px",
+    borderRadius: "8px",
+    border: "1px solid #d1d5db",
+    fontSize: windowWidth < 768 ? "0.9rem" : "0.95rem",
+    cursor: "pointer",
+    width: windowWidth < 768 ? "100%" : "150px", // Full width on mobile
+  };
+
+  const inputStyle = {
+    padding: windowWidth < 768 ? "8px 12px" : "10px 15px",
+    borderRadius: "8px",
+    border: "1px solid #d1d5db",
+    fontSize: windowWidth < 768 ? "0.9rem" : "0.95rem",
+    width: windowWidth < 768 ? "100%" : "250px",
+  };
+
+  const countStyle = {
+    padding: windowWidth < 768 ? "6px 12px" : "8px 15px",
+    background: "#f3f4f6",
+    borderRadius: "20px",
+    fontSize: windowWidth < 768 ? "0.8rem" : "0.9rem",
+    color: "#4b5563",
+    width: windowWidth < 768 ? "100%" : "auto",
+    textAlign: "center" as const,
+  };
+
   return (
     <div style={{ width: "100%" }}>
-      {/* ✅ FILTRE here */}
-      <div
-        style={{
-          padding: "20px",
-          background: "white",
-          borderBottom: "1px solid #e5e7eb",
-          boxShadow: "0 2px 4px rgba(0,0,0,0.05)",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            gap: "15px",
-            flexWrap: "wrap",
-            alignItems: "center",
-            justifyContent: "center",
-            maxWidth: "1200px",
-            margin: "0 auto",
-          }}
-        >
-          {/* type  filter*/}
+      {/* FILTER SECTION */}
+      <div style={filterContainerStyle}>
+        <div style={filterRowStyle}>
+          {/* Type filter */}
           <select
             value={filterType}
             onChange={(e) => setFilterType(e.target.value)}
-            style={{
-              padding: "10px 15px",
-              borderRadius: "8px",
-              border: "1px solid #d1d5db",
-              fontSize: "0.95rem",
-              cursor: "pointer",
-              minWidth: "150px",
-            }}
+            style={selectStyle}
           >
             <option value="all">📊 All services</option>
             <option value="0">🤝 Offers only</option>
@@ -125,21 +170,13 @@ export default function ServiceMap() {
           {/* Category filter */}
           <input
             type="text"
-            placeholder="🔍 Filter by category (e.g., Music, Tech...)"
+            placeholder={windowWidth < 768 ? "Filter category..." : "🔍 Filter by category (e.g., Music, Tech...)"}
             value={filterCategory}
             onChange={(e) => setFilterCategory(e.target.value)}
-            style={{
-              padding: "10px 15px",
-              borderRadius: "8px",
-              border: "1px solid #d1d5db",
-              fontSize: "0.95rem",
-              flex: "1",
-              minWidth: "250px",
-            }}
+            style={inputStyle}
             list="categories"
           />
 
-          {/* Datalist for suggest categories */}
           <datalist id="categories">
             {allCategories.map((cat) => (
               <option key={cat} value={cat} />
@@ -147,46 +184,23 @@ export default function ServiceMap() {
           </datalist>
 
           {/* Results count */}
-          <span
-            style={{
-              padding: "8px 15px",
-              background: "#f3f4f6",
-              borderRadius: "20px",
-              fontSize: "0.9rem",
-              color: "#4b5563",
-            }}
-          >
+          <span style={countStyle}>
             📍 {filteredServices.length} service
             {filteredServices.length !== 1 ? "s" : ""} found
           </span>
         </div>
       </div>
 
-      {/* Legend */}
-      <div
-        style={{
-          position: "absolute",
-          top: "100px",
-          right: "20px",
-          zIndex: 1000,
-          background: "white",
-          padding: "12px",
-          borderRadius: "8px",
-          boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-          border: "1px solid #e5e7eb",
-          fontSize: "0.9rem",
-        }}
-      >
-        <div
-          style={{ display: "flex", alignItems: "center", marginBottom: "8px" }}
-        >
+      {/* Legend - now with responsive positioning */}
+      <div style={legendStyle}>
+        <div style={{ display: "flex", alignItems: "center", marginBottom: windowWidth < 768 ? "4px" : "8px" }}>
           <div
             style={{
-              width: "20px",
-              height: "20px",
+              width: windowWidth < 768 ? "16px" : "20px",
+              height: windowWidth < 768 ? "16px" : "20px",
               background: "#22c55e",
               borderRadius: "50%",
-              marginRight: "8px",
+              marginRight: "6px",
               border: "2px solid white",
               boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
             }}
@@ -196,11 +210,11 @@ export default function ServiceMap() {
         <div style={{ display: "flex", alignItems: "center" }}>
           <div
             style={{
-              width: "20px",
-              height: "20px",
+              width: windowWidth < 768 ? "16px" : "20px",
+              height: windowWidth < 768 ? "16px" : "20px",
               background: "#ef4444",
               borderRadius: "50%",
-              marginRight: "8px",
+              marginRight: "6px",
               border: "2px solid white",
               boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
             }}
