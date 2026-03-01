@@ -22,8 +22,6 @@ Users can post offers or needs, and see them instantly displayed on an interacti
 
 ## 🎥 Demo Video
 
-## 🎥 Demo Video
-
 [![CommuneXR Demo](https://img.youtube.com/vi/DE8ptjoFxhw/0.jpg)](https://youtu.be/DE8ptjoFxhw)
 
 ▶️ **Watch the demo:** [https://youtu.be/DE8ptjoFxhw](https://youtu.be/DE8ptjoFxhw)
@@ -226,6 +224,7 @@ Theme: Build an app that serves a community you care about.
 👥 Team: Solo developer
 
 🎯 Goal: Create meaningful community impact
+
 
 📈 What's Next
 
