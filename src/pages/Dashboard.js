@@ -8,7 +8,6 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000";
 
-  // ✅ AJOUTE LES COULEURS ICI - APRÈS LES useState, AVANT LE useEffect
   const statusColors = {
     proposed: { bg: "#fff3cd", color: "#856404" },
     accepted: { bg: "#d4edda", color: "#155724" },
@@ -216,7 +215,7 @@ export default function Dashboard() {
                   <Link to={`/services/${exchange.service?.id}`}>
                     <strong>{exchange.service?.title}</strong>
                   </Link>
-                  {/* ✅ UTILISATION DES COULEURS ICI */}
+                  {/* ✅ COLOR USE */}
                   <span
                     style={{
                       background:
@@ -242,7 +241,7 @@ export default function Dashboard() {
                     : exchange.helper?.username}
                 </small>
 
-                {/* Boutons de statut */}
+                {/* status */}
                 {exchange.status === "proposed" && (
                   <div
                     style={{ marginTop: "10px", display: "flex", gap: "10px" }}

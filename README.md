@@ -202,6 +202,7 @@ communeXR_front/
 🧪 Testing
 bash
 npm test
+
 🎯 Why This Project Matters
 Modern communities are digitally connected but locally disconnected.
 
@@ -216,6 +217,7 @@ CommuneXR bridges that gap by:
 🏘️ Building genuine community bonds one exchange at a time
 
 ⏳ Built For
+
 DEV Weekend Challenge
 Theme: Build an app that serves a community you care about.
 
@@ -226,6 +228,7 @@ Theme: Build an app that serves a community you care about.
 🎯 Goal: Create meaningful community impact
 
 📈 What's Next
+
 Real-time chat with WebSockets
 
 Mobile app with React Native
@@ -242,8 +245,6 @@ Push notifications
 joupify
 
 GitHub: @joupify
-
-Twitter: @yourtwitter
 
 🙏 Acknowledgments
 Leaflet for the amazing mapping library

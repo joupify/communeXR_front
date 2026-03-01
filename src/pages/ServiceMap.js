@@ -4,7 +4,7 @@ import L from "leaflet";
 import { Link } from "react-router-dom";
 import "leaflet/dist/leaflet.css";
 
-// Icône par défaut Leaflet
+// default Leaflet icon
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
@@ -12,7 +12,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
 });
 
-// Icône custom pour offer / need
+// offer/ need custom icon
 const getServiceIcon = (type) =>
   L.divIcon({
     html: `<div style="
@@ -52,7 +52,7 @@ export default function ServiceMap() {
       });
   }, [API_URL]);
 
-  // Filtrer les services
+  // Service filtering logic
   const filteredServices = services.filter((s) => {
     const serviceTypeMatch =
       filterType === "all" ||
@@ -67,7 +67,7 @@ export default function ServiceMap() {
     return serviceTypeMatch && categoryMatch && s.latitude && s.longitude;
   });
 
-  // Extraire toutes les catégories uniques pour l'autocomplete (optionnel)
+  // extract unique categories for datalist suggestions
   const allCategories = [
     ...new Set(services.map((s) => s.category).filter(Boolean)),
   ];
@@ -84,7 +84,7 @@ export default function ServiceMap() {
 
   return (
     <div style={{ width: "100%" }}>
-      {/* ✅ FILTRES AJOUTÉS ICI */}
+      {/* ✅ FILTRE here */}
       <div
         style={{
           padding: "20px",
@@ -104,7 +104,7 @@ export default function ServiceMap() {
             margin: "0 auto",
           }}
         >
-          {/* Filtre par type */}
+          {/* type  filter*/}
           <select
             value={filterType}
             onChange={(e) => setFilterType(e.target.value)}
@@ -122,7 +122,7 @@ export default function ServiceMap() {
             <option value="1">🆘 Needs only</option>
           </select>
 
-          {/* Filtre par catégorie */}
+          {/* Category filter */}
           <input
             type="text"
             placeholder="🔍 Filter by category (e.g., Music, Tech...)"
@@ -136,17 +136,17 @@ export default function ServiceMap() {
               flex: "1",
               minWidth: "250px",
             }}
-            list="categories" // Optionnel: datalist pour autocomplete
+            list="categories"
           />
 
-          {/* Datalist pour suggestions de catégories */}
+          {/* Datalist for suggest categories */}
           <datalist id="categories">
             {allCategories.map((cat) => (
               <option key={cat} value={cat} />
             ))}
           </datalist>
 
-          {/* Compteur de résultats */}
+          {/* Results count */}
           <span
             style={{
               padding: "8px 15px",
@@ -162,7 +162,7 @@ export default function ServiceMap() {
         </div>
       </div>
 
-      {/* Légende flottante */}
+      {/* Legend */}
       <div
         style={{
           position: "absolute",
@@ -209,7 +209,7 @@ export default function ServiceMap() {
         </div>
       </div>
 
-      {/* Carte */}
+      {/* Map container */}
       <MapContainer
         center={[48.8566, 2.3522]}
         zoom={13}

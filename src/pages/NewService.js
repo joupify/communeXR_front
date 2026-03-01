@@ -13,7 +13,7 @@ function NewService() {
   const navigate = useNavigate();
   const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000";
 
-  // Suggestions de catégories
+  // Catégories suggestions
   const categorySuggestions = [
     "Music",
     "Technology",
@@ -37,7 +37,7 @@ function NewService() {
     setIsLoading(true);
     setMessage({ text: "⏳ Creating your service...", type: "info" });
 
-    // Validation simple
+    // Validation
     if (!category.trim()) {
       setMessage({ text: "❌ Please select a category", type: "error" });
       setIsLoading(false);
@@ -57,7 +57,7 @@ function NewService() {
             description: description || "Description",
             category: category,
             service_type: serviceType,
-            latitude: 48.8566, // À améliorer avec géocodage plus tard
+            latitude: 48.8566,
             longitude: 2.3522,
             address: address || "Paris",
             status: 0, // 0 = open
@@ -115,7 +115,7 @@ function NewService() {
         </p>
       </div>
 
-      {/* Formulaire */}
+      {/* Form */}
       <div
         style={{
           background: "white",
@@ -125,7 +125,7 @@ function NewService() {
           border: "1px solid #e9ecef",
         }}
       >
-        {/* Message d'alerte */}
+        {/* Alert message */}
         {message.text && (
           <div
             style={{
@@ -161,7 +161,7 @@ function NewService() {
         )}
 
         <form onSubmit={handleSubmit}>
-          {/* Type de service (Offre/Besoin) avec toggle visuel */}
+          {/* service (Offer/Need) with visual toggle */}
           <div style={{ marginBottom: "25px" }}>
             <label
               style={{
@@ -219,7 +219,7 @@ function NewService() {
             </div>
           </div>
 
-          {/* Titre */}
+          {/* Title */}
           <div style={{ marginBottom: "20px" }}>
             <label
               style={{
@@ -300,7 +300,7 @@ function NewService() {
             />
           </div>
 
-          {/* ✅ CATÉGORIE AJOUTÉE AVEC DATALIST */}
+          {/* ✅ CATEGORY ADDED WITH DATALIST */}
           <div style={{ marginBottom: "20px" }}>
             <label
               style={{
@@ -350,7 +350,7 @@ function NewService() {
             </small>
           </div>
 
-          {/* Adresse (optionnelle pour l'instant) */}
+          {/* Address */}
           <div style={{ marginBottom: "25px" }}>
             <label
               style={{
@@ -383,7 +383,7 @@ function NewService() {
             />
           </div>
 
-          {/* Bouton submit */}
+          {/* Button submit */}
           <button
             type="submit"
             disabled={isLoading}
@@ -435,7 +435,7 @@ function NewService() {
             )}
           </button>
 
-          {/* Lien retour */}
+          {/* back button */}
           <div style={{ textAlign: "center", marginTop: "20px" }}>
             <a
               href="/"

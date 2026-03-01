@@ -10,7 +10,7 @@ export default function ServiceDetail() {
 
   const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000";
 
-  // Récupération du service et des échanges
+  // Get service details and associated exchanges
   useEffect(() => {
     setLoading(true);
     fetch(`${API_URL}/services/${id}?include=exchanges`)
@@ -60,7 +60,7 @@ export default function ServiceDetail() {
       body: JSON.stringify({
         service_id: service.id,
         message: message.trim(),
-        requester_id: 1, // utilisateur connecté (DemoUser)
+        requester_id: 1, // user connected (DemoUser)
         helper_id: service.user.id,
       }),
     })
@@ -71,8 +71,8 @@ export default function ServiceDetail() {
         return data;
       })
       .then((data) => {
-        setExchanges([data, ...exchanges]); // ajouter le nouvel échange en haut
-        setMessage(""); // vider le champ
+        setExchanges([data, ...exchanges]);
+        setMessage(""); // clean message input
         alert("✅ Message sent successfully!");
       })
       .catch((err) => {
@@ -81,7 +81,7 @@ export default function ServiceDetail() {
       });
   };
 
-  // Couleurs pour les statuts
+  // Colors for exchange status
   const statusColors = {
     proposed: { bg: "#fff3cd", color: "#856404" },
     accepted: { bg: "#d4edda", color: "#155724" },
@@ -106,14 +106,14 @@ export default function ServiceDetail() {
         </h2>
       </div>
 
-      {/* Contenu principal */}
+      {/* Principal content*/}
       <div style={{ padding: "0 10px" }}>
         <h3>{service.title}</h3>
         <p style={{ fontSize: "1.1em", lineHeight: "1.6", color: "#333" }}>
           {service.description}
         </p>
 
-        {/* Informations détaillées */}
+        {/* Details */}
         <div
           style={{
             background: "#f8f9fa",
@@ -154,7 +154,7 @@ export default function ServiceDetail() {
           </p>
         </div>
 
-        {/* 🏆 SECTION BADGES */}
+        {/* 🏆 BADGES  SECTION*/}
         {service.user &&
           service.user.badges &&
           service.user.badges.length > 0 && (
@@ -213,7 +213,7 @@ export default function ServiceDetail() {
             </div>
           )}
 
-        {/* Formulaire de message */}
+        {/* Form for sending message */}
         {service.user ? (
           <div style={{ marginTop: "30px" }}>
             <h4>💬 Send a message to {service.user.username}</h4>
@@ -247,7 +247,7 @@ export default function ServiceDetail() {
               Send Message & Propose Exchange
             </button>
 
-            {/* Historique des échanges */}
+            {/* Exchanges historic */}
             <h5 style={{ marginTop: "30px", marginBottom: "15px" }}>
               📋 Exchange History ({exchanges.length})
             </h5>
@@ -309,7 +309,7 @@ export default function ServiceDetail() {
           </p>
         )}
 
-        {/* Bouton retour */}
+        {/* back button */}
         <div style={{ marginTop: "30px", textAlign: "center" }}>
           <a
             href="/"
