@@ -93,7 +93,7 @@ export default function ServiceMap() {
   // ✅ RESPONSIVE LEGEND STYLES
   const legendStyle = {
     position: "absolute",
-    top: windowWidth < 768 ? "180px" : "100px", // Plus bas sur mobile
+    top: windowWidth < 768 ? "180px" : "100px",
     right: windowWidth < 768 ? "10px" : "20px",
     zIndex: 1000,
     background: "white",

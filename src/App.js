@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import NewService from "./pages/NewService";
@@ -6,6 +6,18 @@ import ServiceDetail from "./pages/ServiceDetail";
 import Dashboard from "./pages/Dashboard";
 
 function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+      if (window.innerWidth >= 768) setMenuOpen(false); // Ferme le menu sur desktop
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <Router>
       <nav
@@ -19,7 +31,11 @@ function App() {
         <div className="container">
           <div className="d-flex justify-content-between align-items-center py-3">
             {/* Logo / Brand */}
-            <Link to="/" style={{ textDecoration: "none" }}>
+            <Link
+              to="/"
+              style={{ textDecoration: "none" }}
+              onClick={() => setMenuOpen(false)}
+            >
               <div
                 style={{ display: "flex", alignItems: "center", gap: "10px" }}
               >
@@ -40,32 +56,77 @@ function App() {
               </div>
             </Link>
 
-            {/* Menu pour desktop */}
-            <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
-              <Link to="/" style={linkStyle}>
-                🗺️ Map
-              </Link>
-              <Link to="/new" style={linkStyle}>
-                ➕ New
-              </Link>
-              <Link to="/dashboard" style={linkStyle}>
-                📊 Dashboard
-              </Link>
-            </div>
-
-            {/* Menu burger pour mobile (optionnel) */}
+            {/* ✅ MENU BURGER POUR MOBILE */}
             <button
-              className="navbar-toggler d-lg-none"
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="d-lg-none"
               style={{
                 background: "rgba(255,255,255,0.1)",
                 border: "1px solid #4a4a8a",
                 borderRadius: "8px",
                 padding: "8px 12px",
+                cursor: "pointer",
+                display: isMobile ? "block" : "none",
               }}
             >
-              <span style={{ color: "white" }}>☰</span>
+              <span style={{ color: "white", fontSize: "1.5rem" }}>
+                {menuOpen ? "✕" : "☰"}
+              </span>
             </button>
+
+            {/* ✅ MENU POUR DESKTOP */}
+            {!isMobile && (
+              <div
+                style={{ display: "flex", gap: "20px", alignItems: "center" }}
+              >
+                <Link to="/" style={linkStyle}>
+                  🗺️ Map
+                </Link>
+                <Link to="/new" style={linkStyle}>
+                  ➕ New
+                </Link>
+                <Link to="/dashboard" style={linkStyle}>
+                  📊 Dashboard
+                </Link>
+              </div>
+            )}
           </div>
+
+          {/* ✅ MENU MOBILE DÉROULANT */}
+          {isMobile && menuOpen && (
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+                padding: "20px 0",
+                borderTop: "1px solid #4a4a8a",
+                marginTop: "10px",
+              }}
+            >
+              <Link
+                to="/"
+                style={{ ...linkStyle, width: "100%", textAlign: "center" }}
+                onClick={() => setMenuOpen(false)}
+              >
+                🗺️ Map
+              </Link>
+              <Link
+                to="/new"
+                style={{ ...linkStyle, width: "100%", textAlign: "center" }}
+                onClick={() => setMenuOpen(false)}
+              >
+                ➕ New
+              </Link>
+              <Link
+                to="/dashboard"
+                style={{ ...linkStyle, width: "100%", textAlign: "center" }}
+                onClick={() => setMenuOpen(false)}
+              >
+                📊 Dashboard
+              </Link>
+            </div>
+          )}
         </div>
       </nav>
 
@@ -81,7 +142,6 @@ function App() {
   );
 }
 
-// Style pour les liens
 const linkStyle = {
   color: "#e0e0ff",
   textDecoration: "none",
@@ -91,16 +151,7 @@ const linkStyle = {
   borderRadius: "20px",
   transition: "all 0.3s ease",
   border: "1px solid transparent",
+  display: "inline-block",
 };
-
-// Ajoute le CSS dans un <style> ou dans ton fichier CSS
-const hoverStyle = `
-  .nav-link:hover {
-    background: rgba(255,255,255,0.1);
-    border-color: #6a6aaa;
-    transform: translateY(-2px);
-    color: white !important;
-  }
-`;
 
 export default App;
