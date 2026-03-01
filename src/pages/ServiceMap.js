@@ -39,8 +39,8 @@ export default function ServiceMap() {
   // Detect window resize for responsive adjustments
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
@@ -148,7 +148,7 @@ export default function ServiceMap() {
     fontSize: windowWidth < 768 ? "0.8rem" : "0.9rem",
     color: "#4b5563",
     width: windowWidth < 768 ? "100%" : "auto",
-    textAlign: "center" as const,
+    textAlign: "center",
   };
 
   return (
@@ -170,7 +170,11 @@ export default function ServiceMap() {
           {/* Category filter */}
           <input
             type="text"
-            placeholder={windowWidth < 768 ? "Filter category..." : "🔍 Filter by category (e.g., Music, Tech...)"}
+            placeholder={
+              windowWidth < 768
+                ? "Filter category..."
+                : "🔍 Filter by category (e.g., Music, Tech...)"
+            }
             value={filterCategory}
             onChange={(e) => setFilterCategory(e.target.value)}
             style={inputStyle}
@@ -193,7 +197,13 @@ export default function ServiceMap() {
 
       {/* Legend - now with responsive positioning */}
       <div style={legendStyle}>
-        <div style={{ display: "flex", alignItems: "center", marginBottom: windowWidth < 768 ? "4px" : "8px" }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            marginBottom: windowWidth < 768 ? "4px" : "8px",
+          }}
+        >
           <div
             style={{
               width: windowWidth < 768 ? "16px" : "20px",
