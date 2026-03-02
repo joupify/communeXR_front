@@ -196,11 +196,10 @@ export default function ServiceMap() {
       </div>
 
       {/* Legend - now with responsive positioning */}
-      {/* Légende - version simplifiée qui marche à coup sûr */}
       <div
         style={{
           position: "absolute",
-          top: window.innerWidth < 768 ? "250px" : "100px", // ← direct !
+          top: window.innerWidth < 768 ? "200px" : "120px", // ← Plus bas sur mobile
           right: window.innerWidth < 768 ? "10px" : "20px",
           zIndex: 1000,
           background: "white",
@@ -211,6 +210,7 @@ export default function ServiceMap() {
           fontSize: window.innerWidth < 768 ? "0.8rem" : "0.9rem",
         }}
       >
+        {/* OFFER */}
         <div
           style={{ display: "flex", alignItems: "center", marginBottom: "8px" }}
         >
@@ -227,6 +227,8 @@ export default function ServiceMap() {
           ></div>
           <span>Offer 🤝</span>
         </div>
+
+        {/* NEED */}
         <div style={{ display: "flex", alignItems: "center" }}>
           <div
             style={{
