@@ -90,85 +90,47 @@ export default function ServiceMap() {
     );
   }
 
-  // ✅ RESPONSIVE LEGEND STYLES
-  const legendStyle = {
-    position: "absolute",
-    top: windowWidth < 768 ? "60px" : "100px", // ← Plus haut sur mobile (au-dessus nav)
-    right: windowWidth < 768 ? "10px" : "20px",
-    zIndex: 999, // ← EN-DESSOUS du burger (1050)
-    background: "white",
-    padding: windowWidth < 768 ? "6px 8px" : "12px",
-    borderRadius: "8px",
-    boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
-    border: "1px solid #e5e7eb",
-    fontSize: windowWidth < 768 ? "0.75rem" : "0.85rem",
-    maxWidth: windowWidth < 768 ? "100px" : "140px", // ← Plus petite sur mobile
-    minWidth: "90px",
-  };
-
-  // ✅ RESPONSIVE FILTER CONTAINER
-  const filterContainerStyle = {
-    padding: windowWidth < 768 ? "15px" : "20px",
-    background: "white",
-    borderBottom: "1px solid #e5e7eb",
-    boxShadow: "0 2px 4px rgba(0,0,0,0.05)",
-  };
-
-  const filterRowStyle = {
-    display: "flex",
-    gap: windowWidth < 768 ? "10px" : "15px",
-    flexWrap: "wrap",
-    alignItems: "center",
-    justifyContent: "center",
-    maxWidth: "1200px",
-    margin: "0 auto",
-    flexDirection: windowWidth < 768 ? "column" : "row", // Stack on mobile
-  };
-
-  const selectStyle = {
-    padding: windowWidth < 768 ? "8px 12px" : "10px 15px",
-    borderRadius: "8px",
-    border: "1px solid #d1d5db",
-    fontSize: windowWidth < 768 ? "0.9rem" : "0.95rem",
-    cursor: "pointer",
-    width: windowWidth < 768 ? "100%" : "150px", // Full width on mobile
-  };
-
-  const inputStyle = {
-    padding: windowWidth < 768 ? "8px 12px" : "10px 15px",
-    borderRadius: "8px",
-    border: "1px solid #d1d5db",
-    fontSize: windowWidth < 768 ? "0.9rem" : "0.95rem",
-    width: windowWidth < 768 ? "100%" : "250px",
-  };
-
-  const countStyle = {
-    padding: windowWidth < 768 ? "6px 12px" : "8px 15px",
-    background: "#f3f4f6",
-    borderRadius: "20px",
-    fontSize: windowWidth < 768 ? "0.8rem" : "0.9rem",
-    color: "#4b5563",
-    width: windowWidth < 768 ? "100%" : "auto",
-    textAlign: "center",
-  };
-
   return (
     <div style={{ width: "100%" }}>
-      {/* FILTER SECTION */}
-      <div style={filterContainerStyle}>
-        <div style={filterRowStyle}>
-          {/* Type filter */}
+      {/* ✅ FILTRES + LÉGENDE INTÉGRÉS DANS LE FLUX */}
+      <div
+        style={{
+          padding: windowWidth < 768 ? "15px" : "20px",
+          background: "white",
+          borderBottom: "1px solid #e5e7eb",
+          boxShadow: "0 2px 4px rgba(0,0,0,0.05)",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            gap: windowWidth < 768 ? "10px" : "15px",
+            flexWrap: "wrap",
+            alignItems: "center",
+            justifyContent: "center",
+            maxWidth: "1200px",
+            margin: "0 auto",
+          }}
+        >
+          {/* Filtre par type */}
           <select
             value={filterType}
             onChange={(e) => setFilterType(e.target.value)}
-            style={selectStyle}
+            style={{
+              padding: windowWidth < 768 ? "8px 12px" : "10px 15px",
+              borderRadius: "8px",
+              border: "1px solid #d1d5db",
+              fontSize: windowWidth < 768 ? "0.9rem" : "0.95rem",
+              cursor: "pointer",
+              minWidth: windowWidth < 768 ? "100%" : "150px",
+            }}
           >
             <option value="all">📊 All services</option>
             <option value="0">🤝 Offers only</option>
             <option value="1">🆘 Needs only</option>
           </select>
 
-          {/* Category filter */}
+          {/* Filtre par catégorie */}
           <input
             type="text"
             placeholder={
@@ -178,71 +140,89 @@ export default function ServiceMap() {
             }
             value={filterCategory}
             onChange={(e) => setFilterCategory(e.target.value)}
-            style={inputStyle}
+            style={{
+              padding: windowWidth < 768 ? "8px 12px" : "10px 15px",
+              borderRadius: "8px",
+              border: "1px solid #d1d5db",
+              fontSize: windowWidth < 768 ? "0.9rem" : "0.95rem",
+              flex: "1",
+              minWidth: windowWidth < 768 ? "100%" : "250px",
+            }}
             list="categories"
           />
 
+          {/* Datalist pour suggestions */}
           <datalist id="categories">
             {allCategories.map((cat) => (
               <option key={cat} value={cat} />
             ))}
           </datalist>
 
-          {/* Results count */}
-          <span style={countStyle}>
+          {/* Résultats */}
+          <span
+            style={{
+              padding: windowWidth < 768 ? "6px 12px" : "8px 15px",
+              background: "#f3f4f6",
+              borderRadius: "20px",
+              fontSize: windowWidth < 768 ? "0.8rem" : "0.9rem",
+              color: "#4b5563",
+              width: windowWidth < 768 ? "100%" : "auto",
+              textAlign: "center",
+            }}
+          >
             📍 {filteredServices.length} service
             {filteredServices.length !== 1 ? "s" : ""} found
           </span>
-        </div>
-      </div>
 
-      {/* Legend - now with responsive positioning */}
-      <div
-        style={{
-          position: "absolute",
-          top: window.innerWidth < 768 ? "200px" : "120px", // ← Plus bas sur mobile
-          right: window.innerWidth < 768 ? "10px" : "20px",
-          zIndex: 1000,
-          background: "white",
-          padding: window.innerWidth < 768 ? "8px" : "12px",
-          borderRadius: "8px",
-          boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-          border: "1px solid #e5e7eb",
-          fontSize: window.innerWidth < 768 ? "0.8rem" : "0.9rem",
-        }}
-      >
-        {/* OFFER */}
-        <div
-          style={{ display: "flex", alignItems: "center", marginBottom: "8px" }}
-        >
+          {/* ✅ LÉGENDE INTÉGRÉE DANS LE MÊME FLEX WRAP */}
           <div
             style={{
-              width: window.innerWidth < 768 ? "16px" : "20px",
-              height: window.innerWidth < 768 ? "16px" : "20px",
-              background: "#22c55e",
-              borderRadius: "50%",
-              marginRight: "6px",
-              border: "2px solid white",
-              boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
+              display: "flex",
+              alignItems: "center",
+              gap: windowWidth < 768 ? "10px" : "15px",
+              padding: windowWidth < 768 ? "5px 10px" : "5px 15px",
+              background: "#f8f9fa",
+              borderRadius: "8px",
+              border: "1px solid #e5e7eb",
+              width: windowWidth < 768 ? "100%" : "auto",
+              justifyContent: windowWidth < 768 ? "center" : "flex-start",
             }}
-          ></div>
-          <span>Offer 🤝</span>
-        </div>
-
-        {/* NEED */}
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <div
-            style={{
-              width: window.innerWidth < 768 ? "16px" : "20px",
-              height: window.innerWidth < 768 ? "16px" : "20px",
-              background: "#ef4444",
-              borderRadius: "50%",
-              marginRight: "6px",
-              border: "2px solid white",
-              boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
-            }}
-          ></div>
-          <span>Need 🆘</span>
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+              <div
+                style={{
+                  width: windowWidth < 768 ? "16px" : "20px",
+                  height: windowWidth < 768 ? "16px" : "20px",
+                  background: "#22c55e",
+                  borderRadius: "50%",
+                  border: "2px solid white",
+                  boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
+                }}
+              ></div>
+              <span
+                style={{ fontSize: windowWidth < 768 ? "0.8rem" : "0.9rem" }}
+              >
+                Offer 🤝
+              </span>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+              <div
+                style={{
+                  width: windowWidth < 768 ? "16px" : "20px",
+                  height: windowWidth < 768 ? "16px" : "20px",
+                  background: "#ef4444",
+                  borderRadius: "50%",
+                  border: "2px solid white",
+                  boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
+                }}
+              ></div>
+              <span
+                style={{ fontSize: windowWidth < 768 ? "0.8rem" : "0.9rem" }}
+              >
+                Need 🆘
+              </span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -250,12 +230,7 @@ export default function ServiceMap() {
       <MapContainer
         center={[48.8566, 2.3522]}
         zoom={13}
-        style={{
-          height: "600px",
-          width: "100%",
-          position: "relative",
-          paddingTop: windowWidth < 768 ? "80px" : "120px",
-        }}
+        style={{ height: "600px", width: "100%" }}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
