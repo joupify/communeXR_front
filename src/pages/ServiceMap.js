@@ -93,16 +93,17 @@ export default function ServiceMap() {
   // ✅ RESPONSIVE LEGEND STYLES
   const legendStyle = {
     position: "absolute",
-    top: windowWidth < 768 ? "180px" : "100px",
+    top: windowWidth < 768 ? "60px" : "100px", // ← Plus haut sur mobile (au-dessus nav)
     right: windowWidth < 768 ? "10px" : "20px",
-    zIndex: 1000,
+    zIndex: 999, // ← EN-DESSOUS du burger (1050)
     background: "white",
-    padding: windowWidth < 768 ? "8px" : "12px",
+    padding: windowWidth < 768 ? "6px 8px" : "12px",
     borderRadius: "8px",
-    boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
     border: "1px solid #e5e7eb",
-    fontSize: windowWidth < 768 ? "0.8rem" : "0.9rem",
-    maxWidth: windowWidth < 768 ? "120px" : "auto",
+    fontSize: windowWidth < 768 ? "0.75rem" : "0.85rem",
+    maxWidth: windowWidth < 768 ? "100px" : "140px", // ← Plus petite sur mobile
+    minWidth: "90px",
   };
 
   // ✅ RESPONSIVE FILTER CONTAINER
@@ -249,7 +250,12 @@ export default function ServiceMap() {
       <MapContainer
         center={[48.8566, 2.3522]}
         zoom={13}
-        style={{ height: "600px", width: "100%" }}
+        style={{
+          height: "600px",
+          width: "100%",
+          position: "relative",
+          paddingTop: windowWidth < 768 ? "80px" : "120px",
+        }}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
