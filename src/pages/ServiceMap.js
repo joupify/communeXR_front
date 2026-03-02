@@ -196,18 +196,28 @@ export default function ServiceMap() {
       </div>
 
       {/* Legend - now with responsive positioning */}
-      <div style={legendStyle}>
+      {/* Légende - version simplifiée qui marche à coup sûr */}
+      <div
+        style={{
+          position: "absolute",
+          top: window.innerWidth < 768 ? "250px" : "100px", // ← direct !
+          right: window.innerWidth < 768 ? "10px" : "20px",
+          zIndex: 1000,
+          background: "white",
+          padding: window.innerWidth < 768 ? "8px" : "12px",
+          borderRadius: "8px",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+          border: "1px solid #e5e7eb",
+          fontSize: window.innerWidth < 768 ? "0.8rem" : "0.9rem",
+        }}
+      >
         <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            marginBottom: windowWidth < 768 ? "4px" : "8px",
-          }}
+          style={{ display: "flex", alignItems: "center", marginBottom: "8px" }}
         >
           <div
             style={{
-              width: windowWidth < 768 ? "16px" : "20px",
-              height: windowWidth < 768 ? "16px" : "20px",
+              width: window.innerWidth < 768 ? "16px" : "20px",
+              height: window.innerWidth < 768 ? "16px" : "20px",
               background: "#22c55e",
               borderRadius: "50%",
               marginRight: "6px",
@@ -220,8 +230,8 @@ export default function ServiceMap() {
         <div style={{ display: "flex", alignItems: "center" }}>
           <div
             style={{
-              width: windowWidth < 768 ? "16px" : "20px",
-              height: windowWidth < 768 ? "16px" : "20px",
+              width: window.innerWidth < 768 ? "16px" : "20px",
+              height: window.innerWidth < 768 ? "16px" : "20px",
               background: "#ef4444",
               borderRadius: "50%",
               marginRight: "6px",
